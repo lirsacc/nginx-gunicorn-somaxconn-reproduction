@@ -4,7 +4,7 @@ Reproducing `connect() to unix:/run/gunicorn.socket failed (11: Resource tempora
 
 ## Reproducing the issue
 
-We can easily reproduce the issue using a load testing tool such as [vegeta](https://github.com/tsenart/vegeta) or [ab](https://httpd.apache.org/docs/2.4/programs/ab.html) against the provided docker container which exposes a basic gunicorn + nginx config pointing to a [Python WSGI application](./docker/root/etc/service/wsgi/server) simulating blocking I/O by calling `time.sleep` for 2 seconds / request.
+We can easily reproduce the issue using a load testing tool such as [vegeta](https://github.com/tsenart/vegeta) or [ab](https://httpd.apache.org/docs/2.4/programs/ab.html) against the provided docker container which exposes a basic gunicorn + nginx config pointing to a [Python WSGI application](./docker/root/etc/service/wsgi/server.py) simulating blocking I/O by calling `time.sleep` for 2 seconds / request.
 
 First build the image and start the container:
 
