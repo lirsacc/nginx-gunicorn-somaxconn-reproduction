@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+exec \
+  gunicorn \
+  --bind=unix:/run/gunicorn.socket \
+  --pid=/run/gunicorn.pid \
+  --workers="${GUNICORN_WORKERS:-1}" \
+  --capture-output \
+  server:app
